@@ -5,8 +5,14 @@
     <test name="Smoke Tests">
 
         <classes>
-            <class name="com.sachin.tests.login.LoginSmokeTest"/>
-        </classes>
+
+    <class name="com.sachin.tests.auth.LoginPositiveTests"/>
+
+    <class name="com.sachin.tests.auth.LoginNegativeTests"/>
+
+    <class name="com.sachin.tests.auth.LoginBoundaryTests"/>
+
+</classes>
 
     </test>
 
