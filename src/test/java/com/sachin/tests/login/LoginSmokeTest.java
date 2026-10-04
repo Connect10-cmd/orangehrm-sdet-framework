@@ -1,20 +1,16 @@
 package com.sachin.tests.login;
 
-import com.sachin.framework.driver.DriverFactory;
+import com.sachin.framework.pages.LoginPage;
 import com.sachin.tests.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginSmokeTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "authentication"})
     public void verifyLoginPageLoads() {
-
-        String currentUrl =
-                DriverFactory.getDriver().getCurrentUrl();
-
-        Assert.assertTrue(
-                currentUrl.contains("orangehrm")
-        );
+        LoginPage loginPage = new LoginPage();
+        Assert.assertTrue(loginPage.isLoginPageDisplayed(), "Login form should be visible");
+        Assert.assertTrue(loginPage.isLoginUrl(), "Browser should be on the login URL");
     }
 }

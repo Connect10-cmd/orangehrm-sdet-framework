@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class LoginNegativeTests extends BaseTest {
 
     @Test(
-            groups = {"regression","negative"},
+            groups = {"regression", "authentication"},
             dataProvider = "invalidLoginData",
             dataProviderClass = LoginDataProvider.class
     )

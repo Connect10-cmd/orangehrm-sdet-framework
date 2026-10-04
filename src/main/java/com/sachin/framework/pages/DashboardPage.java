@@ -1,17 +1,11 @@
 package com.sachin.framework.pages;
 
-import com.sachin.framework.driver.DriverFactory;
+import com.sachin.framework.components.SideMenuComponent;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class DashboardPage extends BasePage {
 
-public class DashboardPage {
-
-    private final WebDriver driver;
-    private final WebDriverWait wait;
+    private final SideMenuComponent sideMenu;
 
     private final By dashboardHeader =
             By.xpath("//h6[normalize-space()='Dashboard']");
@@ -23,15 +17,15 @@ public class DashboardPage {
             By.xpath("//a[normalize-space()='Logout']");
 
     public DashboardPage() {
-        this.driver = DriverFactory.getDriver();
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.sideMenu = new SideMenuComponent(waitUtils);
+    }
+
+    public SideMenuComponent sideMenu() {
+        return sideMenu;
     }
 
     public boolean isDashboardDisplayed() {
-
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(dashboardHeader)
-        ).isDisplayed();
+        return isDisplayed(dashboardHeader);
     }
 
     public String getCurrentUrl() {
@@ -39,21 +33,19 @@ public class DashboardPage {
     }
 
     public boolean isDashboardUrl() {
-        return driver.getCurrentUrl().contains("dashboard");
+        return waitForUrlContains("dashboard");
+    }
+
+    public boolean isUserSessionAvailable() {
+        return isDisplayed(userDropdown);
     }
 
     public void clickUserDropdown() {
-
-        wait.until(
-                ExpectedConditions.elementToBeClickable(userDropdown)
-        ).click();
+        click(userDropdown);
     }
 
     public void clickLogout() {
-
-        wait.until(
-                ExpectedConditions.elementToBeClickable(logoutLink)
-        ).click();
+        click(logoutLink);
     }
 
     public void logout() {

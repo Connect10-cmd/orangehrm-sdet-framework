@@ -9,21 +9,21 @@ import org.testng.annotations.Test;
 public class LoginBoundaryTests extends BaseTest {
 
     @Test(
-            groups = {"regression","boundary"},
+            groups = {"regression", "authentication"},
             dataProvider = "boundaryLoginData",
             dataProviderClass = LoginDataProvider.class
     )
     public void verifyBoundaryLogin(
             String username,
-            String password
+            String password,
+            int expectedErrorCount
     ) {
 
         LoginPage loginPage = new LoginPage();
 
         loginPage.login(username, password);
 
-        Assert.assertFalse(
-                loginPage.getErrorMessage().isEmpty()
-        );
+        Assert.assertEquals(loginPage.getValidationMessages().size(), expectedErrorCount,
+                "Required-field errors should correspond to the empty inputs");
     }
 }

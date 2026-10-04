@@ -1,0 +1,33 @@
+{
+  "valid": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "invalid": [
+    {
+      "username": "Admin",
+      "password": "invalid-password"
+    },
+    {
+      "username": "invalid-user",
+      "password": "admin123"
+    }
+  ],
+  "validation": [
+    {
+      "username": "",
+      "password": "",
+      "expectedErrorCount": 2
+    },
+    {
+      "username": "Admin",
+      "password": "",
+      "expectedErrorCount": 1
+    },
+    {
+      "username": "",
+      "password": "admin123",
+      "expectedErrorCount": 1
+    }
+  ]
+}

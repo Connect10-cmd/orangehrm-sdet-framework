@@ -2,18 +2,16 @@
 
 <suite name="OrangeHRM Suite">
 
-    <test name="Smoke Tests">
-
+    <test name="OrangeHRM UI Tests">
         <classes>
-
-    <class name="com.sachin.tests.auth.LoginPositiveTests"/>
-
-    <class name="com.sachin.tests.auth.LoginNegativeTests"/>
-
-    <class name="com.sachin.tests.auth.LoginBoundaryTests"/>
-
-</classes>
-
+            <class name="com.sachin.tests.login.LoginSmokeTest"/>
+            <class name="com.sachin.tests.auth.LoginPositiveTests"/>
+            <class name="com.sachin.tests.auth.LoginNegativeTests"/>
+            <class name="com.sachin.tests.auth.LoginBoundaryTests"/>
+            <class name="com.sachin.tests.login.LoginTests"/>
+            <class name="com.sachin.tests.pim.PimNavigationTests"/>
+            <class name="com.sachin.tests.pim.EmployeeLifecycleTests"/>
+        </classes>
     </test>
 
 </suite>
